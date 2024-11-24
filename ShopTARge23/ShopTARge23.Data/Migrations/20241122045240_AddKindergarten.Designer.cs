@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopTARge23.Data;
 
@@ -11,13 +12,15 @@ using ShopTARge23.Data;
 namespace ShopTARge23.Data.Migrations
 {
     [DbContext(typeof(ShopTARge23Context))]
-    partial class ShopTARge23ContextModelSnapshot : ModelSnapshot
+    [Migration("20241122045240_AddKindergarten")]
+    partial class AddKindergarten
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -51,9 +54,6 @@ namespace ShopTARge23.Data.Migrations
                     b.Property<string>("ImageTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("KindergartenId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid?>("RealEstateId")
                         .HasColumnType("uniqueidentifier");
 
@@ -64,7 +64,7 @@ namespace ShopTARge23.Data.Migrations
 
             modelBuilder.Entity("ShopTARge23.Core.Domain.Kindergarten", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -96,7 +96,7 @@ namespace ShopTARge23.Data.Migrations
 
             modelBuilder.Entity("ShopTARge23.Core.Domain.RealEstate", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -125,7 +125,7 @@ namespace ShopTARge23.Data.Migrations
 
             modelBuilder.Entity("ShopTARge23.Core.Domain.Spaceship", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 

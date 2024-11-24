@@ -185,11 +185,10 @@ namespace ShopTARge23.RealEstateTest
 
             var task1 = s.Update(dto);
 
-            Assert.ThrowsAsync<InvalidOperationException>(async () =>
+            await Assert.ThrowsAsync<InvalidOperationException>(async () =>
             {
                 dto.RoomNumber = -1;
                 var task2 = s.Update(dto);
-                await task2;
             });
         }
 
