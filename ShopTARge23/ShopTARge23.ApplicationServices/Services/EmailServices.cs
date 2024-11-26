@@ -27,6 +27,8 @@ namespace ShopTARge23.ApplicationServices.Services
             // otsida üles config ja sis. muutujad // "EmailHost": asdsad; "EmailUsername": asdsa;"EmailPassword": asda
             email.From.Add(new MailboxAddress("Ronald R", username)); // mis nime/emaili kuvab saajale
             email.To.Add(new MailboxAddress("", dto.To));
+
+            // pealkiri + sisu
             email.Subject = dto.Subject;
 
             // email body
@@ -34,6 +36,23 @@ namespace ShopTARge23.ApplicationServices.Services
             {
                 TextBody = dto.Body
             };
+
+            email.Body = bodyBuilder.ToMessageBody();
+
+            // kui on attachmentid
+            if(dto.Attachments != null && dto.Attachments.Any())
+            {
+                foreach (var file in dto.Attachments)
+                {
+                    using (var memoryStream  = new MemoryStream())
+                    {
+                        file.CopyTo(memoryStream);
+                        bodyBuilder.Attachments.Add(file.FileName, memoryStream.ToArray());
+                    }
+                }
+            }
+
+            // kui ei ole attachmente saadab ilma
 
             email.Body = bodyBuilder.ToMessageBody();
 

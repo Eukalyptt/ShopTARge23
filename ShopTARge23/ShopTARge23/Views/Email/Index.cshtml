@@ -2,7 +2,7 @@
 
 <h1>Send email</h1>
 
-<form asp-action="Send" method="post">
+<form asp-action="Send" method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="To">To: </label>
 		<input type="email" class="form-control" id="To" name="To" required />
@@ -14,6 +14,10 @@
 	<div class="form-group">
 		<label for="Body">Message: </label>
 		<textarea class="form-control" id="Body" name="Body" rows="5" required></textarea>
+	</div>
+	<div class="form-group">
+		<label for="Attachments">Attachments: </label>
+		<input type="file" class="form-control" id="Attachments" name="Attachments" multiple/>
 	</div>
 	<button type="submit" class="btn btn-secondary">Send</button>
 </form>

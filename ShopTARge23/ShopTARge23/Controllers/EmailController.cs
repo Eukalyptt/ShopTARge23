@@ -29,7 +29,8 @@ namespace ShopTARge23.Controllers
                 {
                     To = viewModel.To,
                     Subject = viewModel.Subject,
-                    Body = viewModel.Body
+                    Body = viewModel.Body,
+                    Attachments = viewModel.Attachments
                 };
 
                 _emailServices.SendEmail(emailDto);
